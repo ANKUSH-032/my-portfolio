@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+/* Smooth scroll to anchors */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero */
+.hero {
+  min-height: 70vh;
+  background: linear-gradient(135deg, #0d6efd, #6c757d);
+}
+.hero-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border: 4px solid rgba(255,255,255,0.9);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Sections */
+.section-pad {
+  padding: 70px 0;
+}
+.section-title {
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+/* Cards */
+.card {
+  border-radius: 14px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+
+/* Modal */
+.modal-content {
+  border-radius: 14px;
+}
