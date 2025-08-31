@@ -1,0 +1,102 @@
+<div class="bio-page">
+  <!-- Top Mantra -->
+  <div class="mantra text-center">
+    <h2>ॐ नमः गणपतये</h2>
+  </div>
+
+  <!-- Main Card -->
+  <div class="bio-card">
+
+    <!-- Profile Section -->
+    <div class="profile-row">
+      <div class="profile-section text-center">
+        <img [src]="profileImage" alt="Profile" class="profile-img">
+        <h2 class="name">{{ name }}</h2>
+        <p><strong>Occupation:</strong> {{ occupation }}</p>
+      </div>
+
+      <div class="ganesh-section">
+        <img src="/assets/ganeshji.jpg" alt="Lord Ganesh">
+         <p class="ganesh-text">श्री गणेशाय नमः</p>
+      </div>
+    </div>
+
+    <!-- Personal Details -->
+    <div class="details">
+      <h4>Personal Details</h4>
+      <ul>
+        <li><strong>Name:</strong> {{ name }}</li>
+        <li><strong>Date of Birth:</strong> {{ dob }}</li>
+        <li><strong>Age:</strong> {{ age }}</li>
+        <li><strong>Gender:</strong> {{ gender }}</li>
+        <li><strong>Communication Address:</strong> {{ communicationAddress }}</li>
+        <li><strong>Personal Address:</strong> {{ personalAddress }}</li>
+        <li><strong>Height:</strong> {{ height }}</li>
+        <li><strong>Complexion:</strong> {{ complexion }}</li>
+        <li><strong>Religion:</strong> {{ religion }}</li>
+        <li><strong>Caste:</strong> {{ caste }}</li>
+        <li><strong>Gotra:</strong> {{ gotra }}</li>
+        <li><strong>Blood Group:</strong> {{ bloodGroup }}</li>
+        <li><strong>Nationality:</strong> {{ nationality }}</li>
+        <li *ngIf="otherDetails"><strong>Other Details:</strong> {{ otherDetails }}</li>
+      </ul>
+    </div>
+
+    <!-- Parent Details -->
+    <div class="details">
+      <h4>Parents Details</h4>
+      <ul>
+        <li><strong>Father's Name:</strong> {{ fatherName }}</li>
+        <li *ngIf="fatherOccupation"><strong>Father's Occupation:</strong> {{ fatherOccupation }}</li>
+        <li><strong>Mother's Name:</strong> {{ motherName }}</li>
+        <li *ngIf="motherOccupation"><strong>Mother's Occupation:</strong> {{ motherOccupation }}</li>
+      </ul>
+    </div>
+
+    <!-- Work / Professional Details -->
+    <div class="details">
+      <h4>Work & Education</h4>
+      <ul>
+        <li><strong>Occupation:</strong> {{ occupation }}</li>
+        <li><strong>Company Name:</strong> {{ company }}</li>
+        <li><strong>Education:</strong> {{ education }}</li>
+      </ul>
+    </div>
+
+    <!-- Siblings -->
+    <div class="details">
+      <h4>Siblings</h4>
+      <ul>
+        <li *ngFor="let sib of siblings">
+          <strong>{{ sib.name }}</strong> - {{ sib.occupation }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery">
+      <h4 class="expandable-title" (click)="toggleGallery()">
+        📸 Photo Gallery
+        <span *ngIf="!isGalleryExpanded">(Click to Expand)</span>
+      </h4>
+
+      <div class="gallery-grid" *ngIf="isGalleryExpanded">
+        <img *ngFor="let img of gallery; let i=index" 
+             [src]="img" 
+             (click)="openImageModal(i)" 
+             alt="Gallery Image {{ i + 1 }}">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Image Preview -->
+  <div class="modal-overlay" *ngIf="selectedIndex !== null">
+    <button class="close-btn" (click)="closeImageModal()">×</button>
+    
+    <div class="lightbox">
+      <button class="nav-btn prev-btn" (click)="prevImage()"></button>
+      <img [src]="gallery[selectedIndex]" class="modal-img" alt="Preview Image"/>
+      <button class="nav-btn next-btn" (click)="nextImage()"></button>
+    </div>
+  </div>
+</div>

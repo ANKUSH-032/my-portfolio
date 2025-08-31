@@ -1,0 +1,229 @@
+.bio-page {
+  min-height: 100vh;
+  background: url('/assets/biodata-bg.jpg') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  position: relative;
+}
+
+.bio-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+.mantra {
+  z-index: 1;
+  color: #ffd700;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px black;
+  margin-bottom: 20px;
+}
+
+.bio-card {
+  z-index: 1;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 25px;
+  max-width: 900px;
+  width: 100%;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  animation: fadeIn 1s ease-in;
+}
+
+/* Profile + Ganesh layout */
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-section {
+  flex: 1;
+  text-align: center;
+}
+
+.profile-section .profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 5px solid white;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+.profile-section .name {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.ganesh-section {
+  flex: 1;
+  text-align: center;
+}
+
+.ganesh-section img {
+  max-width: 160px;
+  height: auto;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
+}
+.ganesh-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #FFD700; /* golden */
+  margin-top: 8px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+.details {
+  margin: 15px 0;
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.details h4 {
+  border-bottom: 2px solid #ffd700;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.details li {
+  margin-bottom: 6px;
+}
+
+/* --- Gallery --- */
+.gallery {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.gallery h4 {
+  color: #ffd700;
+  margin-bottom: 15px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+}
+
+/* --- Modal Overlay --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  flex-direction: column;
+}
+
+.lightbox {
+  position: relative;
+  max-width: min(92vw, 900px);
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-img {
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+}
+
+/* Navigation buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 55px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,215,0,0.95);
+  color: #111;
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.nav-btn:hover {
+  background: #ffea70;
+  transform: translateY(-50%) scale(1.12);
+}
+
+.prev-btn { left: -70px; }
+.next-btn { right: -70px; }
+
+.prev-btn::before { content: "‹"; }
+.next-btn::before { content: "›"; }
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.close-btn:hover {
+  background: #ffd700;
+  color: #000;
+}
+
+/* Responsive buttons for mobile */
+@media (max-width: 768px) {
+  .prev-btn { left: 10px; }
+  .next-btn { right: 10px; }
+  .nav-btn { width: 44px; height: 44px; font-size: 1.5rem; }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}

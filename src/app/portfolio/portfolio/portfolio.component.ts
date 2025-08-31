@@ -1,4 +1,6 @@
+import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 declare var bootstrap: any;
 interface ThirdPartyApi {
   name: string;
@@ -40,6 +42,11 @@ interface Education {
   styleUrls: ['./portfolio.component.scss'],
 })
 export class PortfolioComponent {
+
+constructor(private router: Router, private scroller: ViewportScroller) {}
+
+
+
   // Header / Hero
   name = 'Ankush Dubey';
   title = 'Full-Stack Developer';
@@ -351,6 +358,11 @@ openImageModal() {
     const modal = new bootstrap.Modal(document.getElementById('profileModal'));
     modal.show();
   }
+  goToSection(section: string) {
+  this.router.navigate(['/'], { fragment: section }).then(() => {
+    this.scroller.scrollToAnchor(section);
+  });
+}
   // Helpers
   toId(s: string) {
     return s.toLowerCase().replace(/[^a-z0-9]+/g, '-');

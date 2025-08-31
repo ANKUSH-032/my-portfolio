@@ -19,11 +19,12 @@
 
       <!-- Navigation -->
       <div class="nav gap-2 flex-wrap">
-        <a class="btn btn-outline-dark btn-sm" href="#about">About</a>
-        <a class="btn btn-outline-dark btn-sm" href="#experience">Experience</a>
-        <a class="btn btn-outline-dark btn-sm" href="#apis">Third-Party APIs</a>
-        <a class="btn btn-outline-dark btn-sm" href="#contact">Contact</a>
-      </div>
+<a class="btn btn-outline-dark btn-sm" (click)="goToSection('about')">About</a>
+<a class="btn btn-outline-dark btn-sm" (click)="goToSection('experience')">Experience</a>
+<a class="btn btn-outline-dark btn-sm" (click)="goToSection('apis')">Third-Party APIs</a>
+<a class="btn btn-outline-dark btn-sm" (click)="goToSection('contact')">Contact</a>
+
+</div>
     </div>
   </div>
 </header>
@@ -217,5 +218,4 @@
     </div>
   </div>
 </div>
-
 
