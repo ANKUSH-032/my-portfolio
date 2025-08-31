@@ -45,7 +45,9 @@ export class PortfolioComponent {
   title = 'Full-Stack Developer';
   subtitle =
     'C# • ASP.NET Core • Dapper • Git • GitHub • Postman • Angular • JavaScript • TypeScript • MongoDB • RESTful API • Third-Party API';
-  profileImage = 'assets/ankush.jpg'; // put your photo in src/assets/profile.jpg
+  profileImage = 'assets/ankush.jpg';
+   bannerImage = 'assets/banner.jpg';
+   // put your photo in src/assets/profile.jpg
   currentYear: number = new Date().getFullYear();
   // About
   about = `Highly skilled and motivated .NET Developer with 3.2 years of hands-on experience in developing web applications using a variety
