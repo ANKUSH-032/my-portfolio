@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-bio-info',
@@ -12,6 +12,7 @@ export class BioInfoComponent {
   // General Info
   @Input() name!: string;
   @Input() profileImage!: string;
+  @Input() ganeshji!: string;
   @Input() bannerImage!: string;
   @Input() url?: string;
 
@@ -55,6 +56,7 @@ export class BioInfoComponent {
     ankush: {
       name: 'Ankush Dubey',
       profileImage: 'assets/ankush.jpg',
+      ganeshji:'assets/ganeshji.jpg',
       bannerImage: 'assets/ganesh-banner.jpg',
       education: 'Bachelor Of Computer Application (BCA) in Computer Science, Master Of Computer Application (MCA) in Computer Science',
       communicationAddress: '504 B, Raj Horizon Mira Road Near Ramdev Park Mira Bhaynder, 401107',
@@ -119,16 +121,20 @@ company:'OSP Labs Pvt Ltd',
     }
   };
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private router: Router) {}
 
-  ngOnInit(): void {
-    this.username = this.route.snapshot.paramMap.get('username') || '';
-    const profile = this.profiles[this.username];
+ ngOnInit(): void {
+  this.username = this.route.snapshot.paramMap.get('username') || '';
 
-    if (profile) {
-      Object.assign(this, profile);
-    }
+  // Check if profile exists
+  if (this.profiles.hasOwnProperty(this.username)) {
+    Object.assign(this, this.profiles[this.username]);
+  } else {
+    this.router.navigate(['/portfolio']);
   }
+}
+
+
 
   openImageModal(index: number) {
     this.selectedIndex = index;

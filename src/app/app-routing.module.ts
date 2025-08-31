@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { BioInfoComponent } from './bio-info/bio-info.component';
 import { PortfolioComponent } from './portfolio/portfolio/portfolio.component';
 const routes: Routes = [
-  { path: '', component: PortfolioComponent },            // your portfolio (default)
+  { path: '', component: PortfolioComponent }, 
+  { path: 'portfolio', component: PortfolioComponent },           // your portfolio (default)
   { path: 'profile/:username', component: BioInfoComponent }, // your bio page
   { path: '**', redirectTo: '' } // fallback
 ];
