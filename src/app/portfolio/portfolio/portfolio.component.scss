@@ -26,3 +26,20 @@
   cursor: pointer; /* so user knows it’s clickable */
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+.hero-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.profile-modal-img {
+  //width: 300px;       /* make it big */
+//  height: 300px;      /* same as width */
+//  border-radius: 50%; /* perfect circle */
+  object-fit: cover;  /* keep aspect ratio */
+  border: 5px solid white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 8px;
+}
