@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+declare var bootstrap: any;
 interface ThirdPartyApi {
   name: string;
   description: string;
@@ -345,7 +345,10 @@ export class PortfolioComponent {
       'https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile',
     resumeUrl: 'assets/Resume.pdf',
   };
-
+openImageModal() {
+    const modal = new bootstrap.Modal(document.getElementById('profileModal'));
+    modal.show();
+  }
   // Helpers
   toId(s: string) {
     return s.toLowerCase().replace(/[^a-z0-9]+/g, '-');

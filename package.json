@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+     "build:gh": "ng build --configuration production --base-href \"/my-portfolio/\"",
+    "deploy:gh": "npm run build:gh && npx angular-cli-ghpages --dir=dist/my-portfolio --branch=gh-pages --message \"Deploy fixed base-href\"",
     "test": "ng test"
   },
   "private": true,

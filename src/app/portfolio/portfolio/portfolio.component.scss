@@ -1,0 +1,28 @@
+.hero-section {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-banner {
+  width: 100%;                /* full width */
+  height: 300px;              /* adjust height as needed */
+  background: url('/assets/banner.jpg') no-repeat center center;
+  background-size: cover;     /* ensures it stretches fully */
+  border-radius: 0 0 12px 12px;  /* keep bottom rounded if you want */
+}
+
+
+.hero-content {
+  position: relative;
+  margin-top: -80px; /* pull up profile image */
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+  cursor: pointer; /* so user knows it’s clickable */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
