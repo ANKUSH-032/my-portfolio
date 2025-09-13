@@ -351,8 +351,8 @@ constructor(private router: Router, private scroller: ViewportScroller) {}
     phone: '+91-7007635014',
     github: 'https://github.com/ANKUSH-032',
     linkedin:
-      'https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile',
-    resumeUrl: 'assets/Resume.pdf',
+      'https://in.linkedin.com/in/ankush-dubey-36bb98175',
+    resumeUrl: 'assets/Resume2.pdf',
   };
 openImageModal() {
     const modal = new bootstrap.Modal(document.getElementById('profileModal'));
