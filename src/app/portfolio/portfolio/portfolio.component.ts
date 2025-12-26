@@ -57,7 +57,7 @@ constructor(private router: Router, private scroller: ViewportScroller) {}
    // put your photo in src/assets/profile.jpg
   currentYear: number = new Date().getFullYear();
   // About
-  about = `Highly skilled and motivated .NET Developer with 3.4 years of hands-on experience in developing web applications using a variety
+  about = `Highly skilled and motivated .NET Developer with 3.5 years of hands-on experience in developing web applications using a variety
  of technologies, including C#, ASP.NET Core, Angular, and Web API. Adept at creating efficient and scalable solutions that meet
  client needs. Currently working as a .NET software developer on a USA healthcare project, with a deep understanding of the USA
  healthcare domain. Proficient in building robust APIs using .NET, and experienced in integrating third-party APIs. Seeking to
