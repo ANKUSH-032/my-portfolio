@@ -1,121 +1,187 @@
-<!-- HERO / HEADER -->
+<!-- ================= HERO / HEADER ================= -->
 <header class="hero-section">
+
   <!-- Background Banner -->
-  <div class="hero-banner" [ngStyle]="{'background-image': 'url(' + bannerImage + ')'}"></div>
-  <!-- Profile + Info -->
-  <div class="container hero-content d-flex flex-wrap align-items-end">
-    <!-- Profile Image (clickable) -->
-    <img 
-      [src]="profileImage" 
-      alt="Profile"
-      class="profile-img me-4"
-      (click)="openImageModal()"
-    >
+  <div 
+    class="hero-banner"
+    [ngStyle]="{'background-image': 'url(' + bannerImage + ')'}">
+  </div>
 
-    <!-- Info -->
-    <div class="hero-info">
-      <h1 class="fw-bold">{{ name }}</h1>
-      <p class="lead mb-3">{{ title }} • {{ subtitle }}</p>
+  <div class="container hero-content">
+    <div class="row align-items-end">
 
-      <!-- Navigation -->
-      <div class="nav gap-2 flex-wrap">
-<a class="btn btn-outline-dark btn-sm" (click)="goToSection('about')">About</a>
-<a class="btn btn-outline-dark btn-sm" (click)="goToSection('experience')">Experience</a>
-<a class="btn btn-outline-dark btn-sm" (click)="goToSection('apis')">Third-Party APIs</a>
-<a class="btn btn-outline-dark btn-sm" (click)="goToSection('contact')">Contact</a>
+      <!-- Profile Image -->
+      <div class="col-auto">
+        <img 
+          [src]="profileImage"
+          alt="Profile"
+          class="profile-img"
+          (click)="openImageModal()">
+      </div>
 
-</div>
+      <!-- Hero Info -->
+      <div class="col">
+        <div class="hero-info">
+          <h1>{{ name }}</h1>
+          <h4>{{ title }}</h4>
+          <p>
+              {{ subtitle }}
+          </p>
+
+          <!-- Navigation Buttons -->
+          <div class="nav flex-wrap">
+            <button class="btn" (click)="goToSection('about')">About</button>
+            <button class="btn" (click)="goToSection('experience')">Experience</button>
+            <button class="btn" (click)="goToSection('apis')">Third-Party APIs</button>
+            <button class="btn" (click)="goToSection('contact')">Contact</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </header>
 
 
-<!-- ABOUT -->
+
+<!-- ================= ABOUT ================= -->
 <section id="about" class="section-pad">
   <div class="container">
     <h2 class="section-title">About</h2>
+
     <p class="lead">{{ about }}</p>
 
-    <div class="row g-4 mt-1">
+    <div class="row g-4 mt-3">
+
       <!-- Education -->
       <div class="col-md-6">
-        <div class="card shadow-sm h-100">
+        <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title"><i class="bi bi-mortarboard" *ngIf="true"></i> Education</h5>
+            <h5 class="card-title">
+              <i class="bi bi-mortarboard"></i> Education
+            </h5>
+
             <div *ngFor="let e of education" class="mb-3">
               <div class="fw-semibold">{{ e.degree }}</div>
-              <div class="text-muted">{{ e.institute }} • {{ e.from }} – {{ e.to }}</div>
-              <div *ngIf="e.notes" class="small mt-1">{{ e.notes }}</div>
+              <div class="text-muted">
+                {{ e.institute }} • {{ e.from }} – {{ e.to }}
+              </div>
+              <div *ngIf="e.notes" class="small mt-1">
+                {{ e.notes }}
+              </div>
             </div>
+
           </div>
         </div>
       </div>
+
       <!-- Achievements -->
       <div class="col-md-6">
-        <div class="card shadow-sm h-100">
+        <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title"><i class="bi bi-trophy" *ngIf="true"></i> Achievements</h5>
+            <h5 class="card-title">
+              <i class="bi bi-trophy"></i> Achievements
+            </h5>
+
             <ul class="list-group list-group-flush">
-              <li *ngFor="let a of achievements" class="list-group-item">{{ a }}</li>
+              <li 
+                *ngFor="let a of achievements"
+                class="list-group-item">
+                {{ a }}
+              </li>
             </ul>
+
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE (Companies -> Projects 3 per row) -->
+
+
+<!-- ================= EXPERIENCE ================= -->
 <section id="experience" class="section-pad bg-light">
   <div class="container">
     <h2 class="section-title">Experience</h2>
 
     <div *ngFor="let exp of experiences" class="mb-5">
-      <div class="d-flex justify-content-between align-items-end flex-wrap gap-2">
-        <h3 class="mb-0">{{ exp.company }} <small class="text-muted">• {{ exp.position }}</small></h3>
-        <div class="text-muted">{{ exp.startDate }} – {{ exp.endDate }}</div>
+
+      <!-- Company Header -->
+      <div class="d-flex justify-content-between flex-wrap align-items-end gap-2">
+        <h3 class="mb-0">
+          <a 
+            [href]="exp.companyUrl"
+            target="_blank"
+            class="text-decoration-none company-link">
+            {{ exp.company }}
+          </a>
+          <small class="text-muted"> • {{ exp.position }}</small>
+        </h3>
+
+        <div class="text-muted">
+          {{ exp.startDate }} – {{ exp.endDate }}
+        </div>
       </div>
 
-      <div class="row mt-3">
-        <div class="col-md-4 mb-4" *ngFor="let p of exp.projects">
-          <div class="card h-100 shadow-sm">
+      <!-- Projects -->
+      <div class="row mt-4">
+        <div 
+          class="col-md-4 mb-4"
+          *ngFor="let p of exp.projects">
+
+          <div class="card h-100">
             <div class="card-body d-flex flex-column">
+
               <h5 class="card-title">{{ p.name }}</h5>
               <p class="card-text">{{ p.shortDescription }}</p>
-              <!-- <p class="small text-muted mb-2"><strong>Duration:</strong> {{ p.startDate }} – {{ p.endDate }}</p> -->
-              <p class="small mb-3"><strong>Tech:</strong> {{ p.technologies.join(', ') }}</p>
+
+              <p class="small mb-3">
+                <strong>Tech:</strong>
+                {{ p.technologies.join(', ') }}
+              </p>
+
               <div class="mt-auto">
                 <button
                   class="btn btn-primary w-100"
                   data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#proj-' + toId(p.name)"
-                >
+                  [attr.data-bs-target]="'#proj-' + toId(p.name)">
                   View Project Details
                 </button>
               </div>
+
             </div>
           </div>
+
         </div>
       </div>
 
       <!-- Project Modals -->
       <ng-container *ngFor="let p of exp.projects">
-        <div class="modal fade" [id]="'proj-' + toId(p.name)" tabindex="-1" aria-hidden="true">
+        <div 
+          class="modal fade"
+          [id]="'proj-' + toId(p.name)"
+          tabindex="-1">
+
           <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
+
               <div class="modal-header">
                 <h5 class="modal-title">{{ p.name }}</h5>
                 <button class="btn-close" data-bs-dismiss="modal"></button>
               </div>
+
               <div class="modal-body">
-                <p class="mb-2"><strong>Description:</strong> {{ p.fullDescription }}</p>
-                <!-- <p class="mb-2"><strong>Duration:</strong> {{ p.startDate }} – {{ p.endDate }}</p> -->
-                <!-- <p class="mb-2"><strong>Team:</strong> {{ p.teamMembers.join(', ') }}</p> -->
-                <p class="mb-2"><strong>Role:</strong> {{ p.role }}</p>
-                <div class="mb-2">
+                <p><strong>Description:</strong> {{ p.fullDescription }}</p>
+                <p><strong>Role:</strong> {{ p.role }}</p>
+
+                <div>
                   <strong>Responsibilities:</strong>
-                  <ul class="mb-0">
-                    <li *ngFor="let r of p.responsibilities">{{ r }}</li>
+                  <ul>
+                    <li *ngFor="let r of p.responsibilities">
+                      {{ r }}
+                    </li>
                   </ul>
                 </div>
                 <div class="mt-3">
@@ -141,29 +207,40 @@
                   </div>
                 </div>
               </div>
+
               <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">
+                  Close
+                </button>
               </div>
+
             </div>
           </div>
         </div>
       </ng-container>
+
     </div>
   </div>
 </section>
 
-<!-- THIRD-PARTY API CATALOG (global) -->
-<section id="apis" class="section-pad">
+<!-- ================= THIRD PARTY API CATALOG ================= -->
+<section id="apis" class="section-pad bg-light">
   <div class="container">
     <h2 class="section-title">Third-Party API Catalog</h2>
+
     <div class="accordion" id="apiCatalogAcc">
-      <div class="accordion-item" *ngFor="let api of apiCatalog; let i = index">
+      <div class="accordion-item"
+           *ngFor="let api of apiCatalog; let i = index">
+
         <h2 class="accordion-header" [id]="'api-h-' + i">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          <button class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
                   [attr.data-bs-target]="'#api-c-' + i">
             {{ api.name }}
           </button>
         </h2>
+
         <div class="accordion-collapse collapse"
              [id]="'api-c-' + i"
              [attr.aria-labelledby]="'api-h-' + i"
@@ -172,50 +249,74 @@
             {{ api.description }}
           </div>
         </div>
+
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section-pad bg-light">
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="section-pad">
   <div class="container">
+
     <h2 class="section-title">Contact</h2>
-    <div class="text-center">
-      <p class="mb-1"><i class="bi bi-envelope"></i> {{ contact.email }}</p>
-      <p class="mb-1"><i class="bi bi-telephone"></i> {{ contact.phone }}</p>
-      <div class="d-flex justify-content-center gap-2 mt-2 flex-wrap">
-        <a class="btn btn-outline-dark btn-sm" [href]="contact.github" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        <a class="btn btn-outline-primary btn-sm" [href]="contact.linkedin" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a>
-        <a class="btn btn-success btn-sm" [href]="contact.resumeUrl" target="_blank"><i class="bi bi-file-earmark-text"></i> Resume</a>
-      </div>
+<div class="text-center">
+    <p><i class="bi bi-envelope"></i> {{ contact.email }}</p>
+    <p><i class="bi bi-telephone"></i> {{ contact.phone }}</p>
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
+
+      <a 
+        class="btn btn-dark"
+        [href]="contact.github"
+        target="_blank">
+        <i class="bi bi-github"></i> GitHub
+      </a>
+
+      <a 
+        class="btn btn-primary"
+        [href]="contact.linkedin"
+        target="_blank">
+        <i class="bi bi-linkedin"></i> LinkedIn
+      </a>
+
+      <a 
+        class="btn btn-success"
+        [href]="contact.resumeUrl"
+        target="_blank">
+        <i class="bi bi-file-earmark-text"></i> Resume
+      </a>
+
     </div>
+</div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="py-4 text-center text-muted small">
-© {{ currentYear }} {{ name }} — All rights reserved.
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="text-center">
+  © {{ currentYear }} {{ name }} — All rights reserved.
 </footer>
-<!-- Profile Image Modal -->
-<!-- Profile Image Modal -->
-<div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+
+
+
+<!-- ================= PROFILE IMAGE MODAL ================= -->
+<div class="modal fade" id="profileModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-transparent border-0 shadow-none text-center">
-      
-      <!-- Close Button -->
-      <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" 
-              data-bs-dismiss="modal" aria-label="Close"></button>
-      
-      <!-- Profile Image -->
-      <div class="d-flex justify-content-center align-items-center">
-        <img 
-          [src]="profileImage" 
-          alt="Profile" 
-          class="profile-modal-img"
-        >
-      </div>
+    <div class="modal-content bg-transparent border-0 text-center">
+
+      <button 
+        type="button"
+        class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
+        data-bs-dismiss="modal">
+      </button>
+
+      <img 
+        [src]="profileImage"
+        class="profile-modal-img"
+        alt="Profile">
     </div>
   </div>
 </div>
-

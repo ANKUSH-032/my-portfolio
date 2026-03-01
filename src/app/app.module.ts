@@ -25,3 +25,4 @@ import { RouterModule } from '@angular/router';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// ng serve, ng build , npm run build:gh , npm run deploy:gh,git add ., git commit -m 'update portfolio'

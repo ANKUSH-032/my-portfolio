@@ -58,7 +58,7 @@ export class BioInfoComponent {
       profileImage: 'assets/ankush.jpg',
       ganeshji:'assets/ganeshji.jpg',
       bannerImage: 'assets/ganesh-banner.jpg',
-      education: 'Bachelor Of Computer Application (BCA) in Computer Science, Master Of Computer Application (MCA) in Computer Science',
+      education: 'Master Of Computer Application (MCA) in Computer Science, Bachelor Of Computer Application (BCA) in Computer Science',
       communicationAddress: '504 B, Raj Horizon Mira Road Near Ramdev Park Mira Bhaynder, 401107',
       personalAddress: 'Khawabeer Jorai Gyanpur Bhadohi, 221304',
       religion: 'Hindu (Brahmin )',
@@ -72,7 +72,7 @@ export class BioInfoComponent {
         { name: 'Prachi Dubey', occupation: 'B.Sc Bio' }
       ],
       futureOccupation: 'Software Architect',
-      occupation: 'Software Developer',
+      occupation: 'Senior Software Engineer',
 
       // 👇 New Personal Info
       height: '5 ft 10 in',
@@ -81,10 +81,10 @@ export class BioInfoComponent {
 nationality:'Indian',
 bloodGroup: 'O+',
 gender:'Male',
-age:'26',
+age:'27',
 dob:'15-03-1999',
 caste:'Dubey',
-company:'OSP Labs Pvt Ltd',
+company:'Riya The Travel Expert',
       gallery: [
         'assets/pic1.JPG',
         'assets/pic2.jpg',

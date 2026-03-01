@@ -23,6 +23,7 @@ interface Project {
 interface Experience {
   company: string;
   position: string;
+  companyUrl: string;
   startDate: string;
   endDate: string;
   projects: Project[];
@@ -42,56 +43,112 @@ interface Education {
   styleUrls: ['./portfolio.component.scss'],
 })
 export class PortfolioComponent {
-
-constructor(private router: Router, private scroller: ViewportScroller) {}
-
-
+  constructor(
+    private router: Router,
+    private scroller: ViewportScroller,
+  ) {}
 
   // Header / Hero
   name = 'Ankush Dubey';
-  title = 'Full-Stack Developer';
+  title = 'Senior Software Engineer';
   subtitle =
     'C# • ASP.NET Core • Dapper • Git • GitHub • Postman • Angular • JavaScript • TypeScript • MongoDB • RESTful API • Third-Party API';
   profileImage = 'assets/ankush.jpg';
-   bannerImage = 'assets/banner.jpg';
-   // put your photo in src/assets/profile.jpg
+  bannerImage = 'assets/banner.jpg';
+  // put your photo in src/assets/profile.jpg
   currentYear: number = new Date().getFullYear();
+  careerStartDate = new Date(2022, 7, 1); // Aug 1, 2022 (Month is 0-based → 7 = August)
   // About
-  about = `Highly skilled and motivated .NET Developer with 3.5 years of hands-on experience in developing web applications using a variety
- of technologies, including C#, ASP.NET Core, Angular, and Web API. Adept at creating efficient and scalable solutions that meet
- client needs. Currently working as a .NET software developer on a USA healthcare project, with a deep understanding of the USA
- healthcare domain. Proficient in building robust APIs using .NET, and experienced in integrating third-party APIs. Seeking to
- contribute my expertise to a dynamic team and further advance my career in software development..`;
+  about = `Results-driven .NET Core Developer with 4+ years of experience designing and deploying scalable enterprise applications across Healthcare and Travel & Tourism domains. Currently working with The Riya Travel Expert (Mumbai), building high-performance backend systems using .NET Core, PostgreSQL, Docker, AWS, Elasticsearch, Kibana, and Redis. Strong expertise in developing secure RESTful APIs, optimizing application performance, and implementing distributed architectures. Experienced in cloud deployments, real-time integrations, and third-party API services.`;
 
   education: Education[] = [
+    {
+      degree: 'MCA, Computer Science',
+      institute: 'Mumbai University',
+      from: '2023',
+      to: '2025',
+    },
     {
       degree: 'BCA, Computer Science',
       institute: 'SCHOOL OF MANAGEMENT SCIENCE VARANASI',
       from: '2018',
       to: '2021',
       notes: 'CGPA 6.5/10',
-    },
-    {
-      degree: 'MCA, Software Systems',
-      institute: 'Mumbai University',
-      from: '2023',
-      to: '2025',
-    },
+    }
+    
   ];
 
   achievements: string[] = [
     ' RISING STAR OF THE QUARTER – OSP LABS Pvt Ltd',
     ' SOCIAL WELFARE (UWC)',
+    'AWS Certification'
     //'Speaker @ Local Angular Meetup'
   ];
 
   // Experience → Company → Projects (each project 3 per row)
   experiences: Experience[] = [
     {
+      company: 'Riya The Travel Expert',
+      position: 'Senior Software Engineer',
+      companyUrl: 'https://riyagroup.travel/',
+      startDate: 'Jan 2026',
+      endDate: 'Present',
+      projects: [
+        {
+          name: 'Hotel Booking & Supplier Integration Platform',
+          shortDescription:
+            'B2B hotel booking APIs with multi-supplier integrations.',
+          fullDescription:
+            'Worked in the travel domain (hotel booking). Designed and developed scalable hotel APIs that are consumed by multiple partner services. Implemented supplier integrations to fetch hotel availability, pricing, booking, and cancellation in real time. Built a unified aggregation layer to manage multiple hotel suppliers under a single API contract.',
+          startDate: 'Jan 2026',
+          endDate: 'Present',
+          technologies: [
+            'ASP.NET Core',
+            'MVC',
+            'PostgreSQL',
+            'Redis',
+            'Elasticsearch / Kibana',
+            'Dapper',
+            'REST API',
+          ],
+          teamMembers: ['You', 'Backend Team', 'QA Team'],
+          role: 'Senior Software Engineer',
+          responsibilities: [
+            'Designed and developed hotel booking REST APIs',
+            'Integrated multiple hotel suppliers (availability, booking, cancel, reprice)',
+            'Created API gateway/aggregation layer for partner services',
+            'Implemented caching using Redis for performance optimization',
+            'Handled logging and monitoring using Elasticsearch & Kibana',
+            'Optimized database queries using Dapper and PostgreSQL',
+            'Collaborated with external partners for API onboarding and support',
+          ],
+          thirdPartyApis: [
+            {
+              name: 'Agoda',
+              description:
+                'Integrated Agoda hotel supplier APIs for real-time hotel availability, pricing, booking confirmation, and cancellation management.',
+            },
+            {
+              name: 'Expedia',
+              description:
+                'Integrated Expedia Rapid APIs to fetch hotel inventory, dynamic pricing, reprice validation, booking, and modification workflows.',
+            },
+            {
+              name: 'Cleartrip',
+              description:
+                'Integrated Cleartrip partner APIs for hotel search, rate verification, booking, and cancellation services.',
+            },
+          ],
+        },
+      ],
+    },
+
+    {
       company: 'OSP Labs Pvt Ltd',
       position: 'Software Developer',
+      companyUrl: 'https://www.osplabs.com/about-us/',
       startDate: 'July 2022',
-      endDate: 'Present',
+      endDate: 'Nov 2025',
       projects: [
         {
           name: 'BABYLIVEADVICE',
@@ -247,57 +304,56 @@ constructor(private router: Router, private scroller: ViewportScroller) {}
           ],
         },
         {
-  name: 'STAR POINT',
-  shortDescription: 'Web application for streamlining business operations and enhancing productivity.',
-  fullDescription: 'Star Point is a comprehensive web application developed to facilitate various business operations, streamline workflows, and enhance productivity through the effective use of modern technologies. The project focuses on automating key business processes, improving communication, and providing intuitive dashboards for managing tasks.',
-  startDate: 'May 2023',
-  endDate: 'June 2023',
-  technologies: ['C#', 'ASP.NET Core Web API', 'Dapper', 'SQL Server', 'Angular', 'JavaScript', 'TypeScript', 'Repository Pattern', 'Onion Architecture'],
-  teamMembers: ['You', 'Team'],
-  role: 'Full-Stack Developer',
-  responsibilities: [
-    'Developed RESTful APIs using ASP.NET Core and Dapper for data access.',
-    'Implemented the Repository Pattern and Onion Architecture for scalable and maintainable code.',
-    'Built responsive frontend components with Angular, JavaScript, and TypeScript.',
-    'Optimized SQL queries and ensured smooth database interactions.',
-    'Collaborated with the team to integrate features and ensure project deadlines were met.'
-  ],
-  thirdPartyApis: []  // Add relevant APIs here if any
-}
-
+          name: 'STAR POINT',
+          shortDescription:
+            'Web application for streamlining business operations and enhancing productivity.',
+          fullDescription:
+            'Star Point is a comprehensive web application developed to facilitate various business operations, streamline workflows, and enhance productivity through the effective use of modern technologies. The project focuses on automating key business processes, improving communication, and providing intuitive dashboards for managing tasks.',
+          startDate: 'May 2023',
+          endDate: 'June 2023',
+          technologies: [
+            'C#',
+            'ASP.NET Core Web API',
+            'Dapper',
+            'SQL Server',
+            'Angular',
+            'JavaScript',
+            'TypeScript',
+            'Repository Pattern',
+            'Onion Architecture',
+          ],
+          teamMembers: ['You', 'Team'],
+          role: 'Full-Stack Developer',
+          responsibilities: [
+            'Developed RESTful APIs using ASP.NET Core and Dapper for data access.',
+            'Implemented the Repository Pattern and Onion Architecture for scalable and maintainable code.',
+            'Built responsive frontend components with Angular, JavaScript, and TypeScript.',
+            'Optimized SQL queries and ensured smooth database interactions.',
+            'Collaborated with the team to integrate features and ensure project deadlines were met.',
+          ],
+          thirdPartyApis: [], // Add relevant APIs here if any
+        },
       ],
     },
-    // {
-    //   company: 'NextGen Innovations',
-    //   position: 'Senior Software Engineer',
-    //   startDate: 'Jan 2021',
-    //   endDate: 'Dec 2021',
-    //   projects: [
-    //     {
-    //       name: 'E-Commerce Platform',
-    //       shortDescription: 'Multi-vendor shop with payments & notifications.',
-    //       fullDescription: 'Led the Angular team; built catalog, cart, checkout and order dashboards; integrated payments and SMS.',
-    //       startDate: 'Jan 2021',
-    //       endDate: 'Dec 2021',
-    //       technologies: ['Angular', 'ASP.NET Web API', 'MongoDB'],
-    //       teamMembers: ['You', 'James', 'Sophia'],
-    //       role: 'Tech Lead',
-    //       responsibilities: [
-    //         'Led 4 devs; code reviews & standards',
-    //         'Designed REST APIs and caching',
-    //         'Owned release process'
-    //       ],
-    //       thirdPartyApis: [
-    //         { name: 'Stripe/PayPal', description: 'Payment collection and refunds.' },
-    //         { name: 'Twilio', description: 'Order/SLA SMS alerts.' }
-    //       ]
-    //     }
-    //   ]
-    // }
   ];
 
   // Third-Party API “catalog” (global section below projects)
   apiCatalog: ThirdPartyApi[] = [
+     {
+              name: 'Agoda Hotel API',
+              description:
+                'Integrated Agoda hotel supplier APIs for real-time hotel availability, pricing, booking confirmation, and cancellation management.',
+            },
+            {
+              name: 'Expedia Hotel API',
+              description:
+                'Integrated Expedia Rapid APIs to fetch hotel inventory, dynamic pricing, reprice validation, booking, and modification workflows.',
+            },
+            {
+              name: 'Cleartrip Hotel API',
+              description:
+                'Integrated Cleartrip partner APIs for hotel search, rate verification, booking, and cancellation services.',
+            },
     {
       name: 'Zoom API',
       description:
@@ -350,21 +406,33 @@ constructor(private router: Router, private scroller: ViewportScroller) {}
     email: 'ankushdubey099@gmail.com',
     phone: '+91-7007635014',
     github: 'https://github.com/ANKUSH-032',
-    linkedin:
-      'https://in.linkedin.com/in/ankush-dubey-36bb98175',
+    linkedin: 'https://in.linkedin.com/in/ankush-dubey-36bb98175',
     resumeUrl: 'assets/Resume2.pdf',
   };
-openImageModal() {
+  openImageModal() {
     const modal = new bootstrap.Modal(document.getElementById('profileModal'));
     modal.show();
   }
   goToSection(section: string) {
-  this.router.navigate(['/'], { fragment: section }).then(() => {
-    this.scroller.scrollToAnchor(section);
-  });
-}
+    this.router.navigate(['/'], { fragment: section }).then(() => {
+      this.scroller.scrollToAnchor(section);
+    });
+  }
   // Helpers
   toId(s: string) {
     return s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  }
+  getExperience(): string {
+    const today = new Date();
+
+    let years = today.getFullYear() - this.careerStartDate.getFullYear();
+    let months = today.getMonth() - this.careerStartDate.getMonth();
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    return `${years}.${months}`;
   }
 }
