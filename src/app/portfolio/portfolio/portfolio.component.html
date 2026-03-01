@@ -30,7 +30,7 @@
 
           <!-- Navigation Buttons -->
           <div class="nav flex-wrap">
-            <button class="btn" (click)="goToSection('about')">About</button>
+            <button class="btn" (click)="goToSection('about'); trackEvent('about_section_click')">About</button>
             <button class="btn" (click)="goToSection('experience')">Experience</button>
             <button class="btn" (click)="goToSection('apis')">Third-Party APIs</button>
             <button class="btn" (click)="goToSection('contact')">Contact</button>
@@ -270,21 +270,24 @@
       <a 
         class="btn btn-dark"
         [href]="contact.github"
-        target="_blank">
+        target="_blank"
+        (click)="trackEvent('github_click')">
         <i class="bi bi-github"></i> GitHub
       </a>
 
       <a 
         class="btn btn-primary"
         [href]="contact.linkedin"
-        target="_blank">
+        target="_blank"
+        (click)="trackEvent('linkedin_click')">
         <i class="bi bi-linkedin"></i> LinkedIn
       </a>
 
       <a 
         class="btn btn-success"
         [href]="contact.resumeUrl"
-        target="_blank">
+        target="_blank"
+        (click)="trackEvent('resume_download')">
         <i class="bi bi-file-earmark-text"></i> Resume
       </a>
 

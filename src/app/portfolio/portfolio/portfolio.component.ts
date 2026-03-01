@@ -2,6 +2,7 @@ import { ViewportScroller } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 declare var bootstrap: any;
+declare let gtag: Function;
 interface ThirdPartyApi {
   name: string;
   description: string;
@@ -47,6 +48,27 @@ export class PortfolioComponent {
     private router: Router,
     private scroller: ViewportScroller,
   ) {}
+
+  ngOnInit() {
+  window.addEventListener('scroll', () => {
+    const scrollPercent =
+      (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+
+    if (scrollPercent > 50) {
+      this.trackEvent('scroll_50_percent');
+    }
+
+    if (scrollPercent > 80) {
+      this.trackEvent('scroll_80_percent');
+    }
+  });
+}
+trackEvent(eventName: string) {
+  gtag('event', eventName, {
+    event_category: 'engagement',
+    event_label: eventName
+  });
+}
 
   // Header / Hero
   name = 'Ankush Dubey';
@@ -436,3 +458,5 @@ export class PortfolioComponent {
     return `${years}.${months}`;
   }
 }
+
+
